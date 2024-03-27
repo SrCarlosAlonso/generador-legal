@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Legal</title>
+  <link rel="stylesheet" href="/legal-page/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<div class="main-container">
+
+  <section class="container">
+    <div class="flex-container">
+      <div class="flex-column w70">
+        <h2 class="header-line">Introduce tu datos fiscales</h2>
+
+        <div class="block">
+
+          <form id="formLegal">
+            <div class="campo-formulario">
+              <label class="form-label">Denominación social:</label>
+              <input type="text" id="input-social" class="form-input" placeholder="Value" required
+                autocomplete="organization">
+            </div>
+
+            <div class="campo-formulario">
+              <label class="form-label">Nombre comercial:</label>
+              <input type="text" id="input-comercial" class="form-input" placeholder="Value" required
+                autocomplete="organization">
+            </div>
+
+            <div class="campo-formulario">
+              <label class="form-label">CIF/NIF:</label>
+              <input type="text" id="input-cif" class="form-input" placeholder="Value" required autocomplete="cc-csc">
+            </div>
+
+            <div class="campo-formulario">
+              <label class="form-label">Dirección::</label>
+              <input type="text" id="input-direccion" class="form-input" placeholder="Value" required
+                autocomplete="address-level1">
+            </div>
+
+            <div class="campo-formulario">
+              <label class="form-label">Email:</label>
+              <input type="text" id="input-email" class="form-input" placeholder="Value" required autocomplete="email">
+            </div>
+
+            <div class="campo-formulario">
+              <label class="form-label">Website:</label>
+              <input type="text" id="input-website" class="form-input" placeholder="Value" required autocomplete="url">
+            </div>
+
+            <div class="campo-formulario">
+              <label class="form-label">Fecha:</label>
+              <input type="text" id="input-fecha" class="form-input" placeholder="Value" required>
+            </div>
+            <button id="input-guardar">Generar documento</button>
+          </form>
+
+        </div>
+      </div>
+
+      <div class="flex-column w30">
+        <h2 class="header-line">Preview de los datos</h2>
+
+        <div class="block">
+          <h4>Los datos introducidos son</h4>
+          <p>Social es: <span class="txt-social"></span></p>
+          <p>Nombre comercial: <span class="txt-comercial"></span></p>
+          <p>Cif es: <span class="txt-cif"></span></p>
+          <p>Direccion es: <span class="txt-direccion"></span></p>
+          <p>Email es: <span class="txt-email"></span></p>
+          <p>Website es: <span class="txt-website"></span></p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div style="width: 100%; background-color: rebeccapurple; height: 50px;">
+      <p>Nota Legal: No hacemos NADA con tus datos, no almacenamos, ni vendemos ni nada de nada. 😇 </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <div id="legalPrivacidad" class="legal-box">
+      <h1>POLÍTICA DE PRIVACIDAD</h1>
+      <p>Última actualización: Mayo 2022.</p>
+      <br>
+      <h2>1. INFORMACIÓN AL USUARIO</h2>
+      <p><span class="txt-social">Razon social</span>, como Responsable del Tratamiento, le informa que, según lo
+        dispuesto en el Reglamento (UE) 2016/679,
+        de 27 de abril, (RGPD) y en la L.O. 3/2018, de 5 de diciembre, de protección de datos y garantía de los
+        derechos
+        digitales (LOPDGDD), trataremos su datos tal y como reflejamos en la presente Política de Privacidad.</p>
+      <p>En esta Política de Privacidad describimos cómo recogemos sus datos personales y por qué los recogemos, qué
+        hacemos con ellos, con quién los compartimos, cómo los protegemos y sus opciones en cuanto al tratamiento de
+        sus
+        datos personales. Esta Política se aplica al tratamiento de sus datos personales recogidos por la empresa para
+        la prestación de sus servicios. Si acepta las medidas de esta Política, acepta que tratemos sus datos
+        personales
+        como se define en esta Política.</p>
+      <br>
+      <h2>2. CONTACTO</h2>
+      <p>Denominación social: <span class="txt-social">- Denominación social -</span></p>
+      <p>Nombre comercial: <span class="txt-comercial">- Nombre comercial -</span></p>
+      <p>CIF: <span class="txt-cif">- CIF</span></p>
+      <p>Domicilio: <span class="txt-direccion">- Domicilio -</span></p>
+      <p>e-mail: <span class="txt-email">- email -</span></p>
+      <br>
+      <h3>3. PRINCIPIOS CLAVE</h3>
+      <p>Siempre hemos estado comprometidos con prestar nuestros servicios con el más alto grado de calidad, lo que
+        incluye tratar sus datos con seguridad y transparencia. Nuestros principios son:</p>
+      <ul>
+        <li><strong>Legalidad:</strong> Solo recopilaremos sus Datos personales para fines específicos, explícitos y
+          legítimos.</li>
+        <li><strong>Minimización de datos:</strong> Limitamos la recogida de datos de carácter personal a lo que es
+          estrictamente relevante y necesario para los fines para los que se han recopilado.</li>
+        <li><strong>Limitación de la Finalidad:</strong> Solo recogeremos sus datos personales para los fines
+          declarados
+          y solo según sus deseos.</li>
+        <li><strong>Precisión:</strong> Mantendremos sus datos personales exactos y actualizados.</li>
+        <li><strong>Seguridad de los Datos:</strong> Aplicamos las medidas técnicas y organizativas adecuadas y
+          proporcionales a los riesgos para garantizar que sus datos no sufran daños, tales como divulgación o acceso
+          no
+          autorizado, la destrucción accidental o ilícita o su pérdida accidental o alteración y cualquier otra forma
+          de
+          tratamiento ilícito.</li>
+        <li><strong>Acceso y Rectificación:</strong> Disponemos de medios para que acceda o rectifique sus datos
+          cuando
+          lo considere oportuno.</li>
+        <li><strong>Conservación:</strong> Conservamos sus datos personales de manera legal y apropiada y solo
+          mientras
+          es necesario para los fines para los que se han recopilado.</li>
+        <li><strong>Las transferencias internacionales:</strong> Cuando se dé el caso de que sus datos vayan a ser
+          transferidos fuera de la UE/EEE se protegerán adecuadamente.</li>
+        <li><strong>Terceros:</strong> El acceso y transferencia de datos personales a terceros se llevan a cabo de
+          acuerdo con las leyes y reglamentos aplicables y con las garantías contractuales adecuadas.</li>
+        <li><strong>Marketing Directo y cookies:</strong> Cumplimos con la legislación aplicable en materia de
+          publicidad y cookies.</li>
+      </ul>
+      <br>
+      <h2>4. RECOGIDA Y TRATAMIENTO DE SUS DATOS PERSONALES</h2>
+      <p>Las tipos de datos que se pueden solicitar y tratar son:</p>
+      <ul>
+        <li><strong>Datos de carácter identificativo.</strong></li>
+        <li><strong>También recogemos de forma automática datos sobre su visita a nuestro sitio web según se describe
+            en
+            la política de cookies.</strong></li>
+      </ul>
+      <br>
+      <p>Siempre que solicitemos sus Datos personales, le informaremos con claridad de qué datos personales recogemos
+        y
+        con qué fin. En general, recogemos y tratamos sus datos personales con el propósito de:</p>
+      <ul>
+        <li>Proporcionar información, servicios, productos, información relevante y novedades en el sector.</li>
+        <li>Envío de comunicaciones.</li>
+      </ul>
+      <br>
+      <h2>5. LEGITIMIDAD</h2>
+      <p>De acuerdo con la normativa de protección de datos aplicable, sus datos personales podrán tratarse siempre
+        que:
+      </p>
+      <ul>
+        <li>Nos ha dado su consentimiento a los efectos del tratamiento. Por supuesto podrá retirar su consentimiento
+          en
+          cualquier momento.</li>
+        <li>Por requerimiento legal.</li>
+        <li>Por existir un interés legítimo que no se vea menoscabado por sus derechos de privacidad, como por ejemplo
+          el envío de información comercial bien por suscripción a nuestra newsletter o por su condición de cliente.
+        </li>
+        <li>Por ser necesaria para la prestación de alguno de nuestros servicios mediante relación contractual entre
+          usted y nosotros.</li>
+      </ul>
+      <br>
+      <h2>6. COMUNICACIÓN DE DATOS PERSONALES</h2>
+      <p>Los datos pueden ser comunicados a empresas relacionadas con <span class="txt-comercial">- Nombre comercial
+          -</span>
+        para la prestación de los diversos servicios en calidad de Encargados del Tratamiento. La empresa no realizará
+        ninguna cesión, salvo por obligación legal.</p>
+      <br>
+      <h2>7. SUS DERECHOS</h2>
+      <p>En relación con la recogida y tratamiento de sus datos personales, puede ponerse en contacto con nosotros en
+        cualquier momento para:</p>
+      <ul>
+        <li>Acceder a sus datos personales y a cualquier otra información indicada en el Artículo 15.1 del RGPD.</li>
+        <li>Rectificar sus datos personales que sean inexactos o estén incompletos de acuerdo con el Artículo 16 del
+          RGPD.</li>
+        <li>Suprimir sus datos personales de acuerdo con el Artículo 17 del RGPD.</li>
+        <li>Limitar el tratamiento de sus datos personales de acuerdo con el Artículo 18 del RGPD.</li>
+        <li>Solicitar la portabilidad de sus datos de acuerdo con el Artículo 20 del RGPD.</li>
+        <li>Oponerse al tratamiento de sus datos personales de acuerdo con el artículo 21 del RGPD.</li>
+      </ul>
+      <p>Si ha otorgado su consentimiento para alguna finalidad concreta, tiene derecho a retirar el consentimiento
+        otorgado en cualquier momento, sin que ello afecte a la licitud del tratamiento basado en el consentimiento
+        previo a su retirada. Puede ejercer estos derechos enviando comunicación, motivada y acreditada, a <span
+          class="txt-email">- email -</span>.</p>
+      <p>También tiene derecho a presentar una reclamación ante la Autoridad de control competente www.aepd.es si
+        considera que el tratamiento no se ajusta a la normativa vigente.</p>
+      <br>
+      <h2>8. INFORMACIÓN LEGAL</h2>
+      <p>Los requisitos de esta Política complementan, y no reemplazan, cualquier otro requisito existente bajo la ley
+        de protección de datos aplicable, que será la que prevalezca en cualquier caso.</p>
+      <p>Esta Política está sujeta a revisiones periódicas y la empresa puede modificarla en cualquier momento. Cuando
+        esto ocurra, le avisaremos de cualquier cambio y le pediremos que vuelva a leer la versión más reciente de
+        nuestra Política y que confirme su aceptación.</p>
+
+    </div>
+    <button class="btn-copiar" onclick="copiarContenido()">
+      Copiar
+      <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 56 64">
+        <g fill="none" stroke="current" stroke-width="3">
+          <path d="M43 55.1V61a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V10c0-1.1.9-2 2-2h9.9M8 21h5M8 30h5M8 37h5M8 46h5M8 52h5" />
+          <path d="M55 15.1V53a2 2 0 0 1-2 2H15a2 2 0 0 1-2-2V3c0-1.1.9-2 2-2h23.9L55 15.1z" />
+          <path d="M55 15.9H41a2 2 0 0 1-2-2V2M20 14h13M20 23h28M20 30h28M20 39h28M20 45h28" />
+        </g>
+      </svg>
+    </button>
+  </section>
+
+  <script src="/legal-page/js/app.js" type="text/javascript"></script>
+</div>
+</body>
+
+</html>
