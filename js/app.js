@@ -2,9 +2,9 @@
  * Popup Legal
  */
 function popupLegal() {
-  var btnAbrirPopup = document.getElementById("abrirPopup");
-  var popup = document.getElementById("aviso-legal_popup");
-  var btnCerrarPopup = document.getElementById("cerrarPopup");
+  const btnAbrirPopup = document.getElementById("abrirPopup");
+  const popup = document.getElementById("aviso-legal_popup");
+  const btnCerrarPopup = document.getElementById("cerrarPopup");
 
   btnAbrirPopup.addEventListener("click", function (event) {
     popup.style.display = "block";
@@ -19,55 +19,57 @@ popupLegal()
  * Generar textos legales
  */
 function legalPage() {
-  var guardar = document.getElementById("input-guardar");
-  var reset = document.getElementById("input-reset");
-  var copiarPolitica = document.getElementById("btn-copiar-Politica");
-  var copiarAviso = document.getElementById("btn-copiar-Aviso");
+  const guardar = document.getElementById("input-guardar");
+  const reset = document.getElementById("input-reset");
+  const copiarPolitica = document.getElementById("btn-copiar-Politica");
+  const copiarAviso = document.getElementById("btn-copiar-Aviso");
 
   guardar.addEventListener("click", function (event) {
-    event.preventDefault(); // Evitamso que se envie formulario por defecto.
+    event.preventDefault(); // Evitamos que se envie formulario por defecto.
 
-    var social = document.getElementById("input-social").value;
-    var comercial = document.getElementById("input-comercial").value;
-    var cif = document.getElementById("input-cif").value;
-    var direccion = document.getElementById("input-direccion").value;
-    var email = document.getElementById("input-email").value;
-    var website = document.getElementById("input-website").value;
-    var fecha = document.getElementById("input-fecha").value;
+    const generadorLegal = {
+      social: document.getElementById('input-social').value,
+      comercial: document.getElementById('input-comercial').value,
+      cif: document.getElementById('input-cif').value,
+      direccion: document.getElementById('input-direccion').value,
+      email: document.getElementById('input-email').value,
+      website: document.getElementById('input-website').value,
+      fecha: document.getElementById('input-fecha').value
+    }
 
-    var txtSocialElements = document.querySelectorAll(".txt-social");
+    const txtSocialElements = document.querySelectorAll(".txt-social");
     txtSocialElements.forEach(function (element) {
-      element.textContent = social;
+      element.textContent = generadorLegal.social;
     });
 
-    var txtComercialElements = document.querySelectorAll(".txt-comercial");
+    const txtComercialElements = document.querySelectorAll(".txt-comercial");
     txtComercialElements.forEach(function (element) {
-      element.textContent = comercial;
+      element.textContent = generadorLegal.comercial;
     });
 
-    var txtCifElements = document.querySelectorAll(".txt-cif");
+    const txtCifElements = document.querySelectorAll(".txt-cif");
     txtCifElements.forEach(function (element) {
-      element.textContent = cif;
+      element.textContent = generadorLegal.cif;
     });
 
-    var txtDireccionElements = document.querySelectorAll(".txt-direccion");
+    const txtDireccionElements = document.querySelectorAll(".txt-direccion");
     txtDireccionElements.forEach(function (element) {
-      element.textContent = direccion;
+      element.textContent = generadorLegal.direccion;
     });
 
-    var txtEmailElements = document.querySelectorAll(".txt-email");
+    const txtEmailElements = document.querySelectorAll(".txt-email");
     txtEmailElements.forEach(function (element) {
-      element.textContent = email;
+      element.textContent = generadorLegal.email;
     });
 
-    var txtWebsiteElements = document.querySelectorAll(".txt-website");
+    const txtWebsiteElements = document.querySelectorAll(".txt-website");
     txtWebsiteElements.forEach(function (element) {
-      element.textContent = website;
+      element.textContent = generadorLegal.website;
     });
 
-    var txtFechaElements = document.querySelectorAll(".txt-fecha");
+    const txtFechaElements = document.querySelectorAll(".txt-fecha");
     txtFechaElements.forEach(function (element) {
-      element.textContent = fecha;
+      element.textContent = generadorLegal.fecha;
     });
 
     //Activamos el boton de reset y el boton copiar
@@ -87,17 +89,19 @@ legalPage();
  * Boton de reset
  */
 function resetDatos() {
-  var reset = document.getElementById("input-reset");
+  const reset = document.getElementById("input-reset");
 
   reset.addEventListener("click", function (event) {
     event.preventDefault(); // Evitamso que se envie formulario por defecto.
     //Valor de los inputs
-    var inputSocial = document.getElementById("input-social");
-    var inputComercial = document.getElementById("input-comercial");
-    var inputCif = document.getElementById("input-cif");
-    var inputDireccion = document.getElementById("input-direccion");
-    var inputEmail = document.getElementById("input-email");
-    var inputWebsite = document.getElementById("input-website");
+    const inputSocial = document.getElementById("input-social");
+    const inputComercial = document.getElementById("input-comercial");
+    const inputCif = document.getElementById("input-cif");
+    const inputDireccion = document.getElementById("input-direccion");
+    const inputEmail = document.getElementById("input-email");
+    const inputWebsite = document.getElementById("input-website");
+    const inputFecha = document.getElementById("input-fecha");
+
     //Reset Valor de los inputs
     inputSocial.value = "";
     inputComercial.value = "";
@@ -105,14 +109,15 @@ function resetDatos() {
     inputDireccion.value = "";
     inputEmail.value = "";
     inputWebsite.value = "";
+    inputFecha.value = "";
 
     // Valor de los textos de preview
-    var txtSocial = document.querySelector(".txt-social");
-    var txtComercial = document.querySelector(".txt-comercial");
-    var txtCif = document.querySelector(".txt-cif");
-    var txtDireccion = document.querySelector(".txt-direccion");
-    var txtEmail = document.querySelector(".txt-email");
-    var txtWebsite = document.querySelector(".txt-website");
+    const txtSocial = document.querySelector(".txt-social");
+    const txtComercial = document.querySelector(".txt-comercial");
+    const txtCif = document.querySelector(".txt-cif");
+    const txtDireccion = document.querySelector(".txt-direccion");
+    const txtEmail = document.querySelector(".txt-email");
+    const txtWebsite = document.querySelector(".txt-website");
     // Reset de los textos de preview
     txtSocial.textContent = "";
     txtComercial.textContent = "";
@@ -166,10 +171,10 @@ const copyAviso = () => {
  * Toggle menu
  */
 function menuLegal() {
-  var politica = document.getElementById("politica-texto");
-  var aviso = document.getElementById("aviso-texto");
-  var btnPolitica = document.getElementById("btn-menu-politica");
-  var btnAviso = document.getElementById("btn-menu-aviso");
+  const politica = document.getElementById("politica-texto");
+  const aviso = document.getElementById("aviso-texto");
+  const btnPolitica = document.getElementById("btn-menu-politica");
+  const btnAviso = document.getElementById("btn-menu-aviso");
 
   //El orden en el que se pasan los elementos determina si es visible o no.
   function toggleVisibilidad(elementoVisible, elementoOculto) {
