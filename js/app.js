@@ -13,7 +13,7 @@ function popupLegal() {
     popup.style.display = "none";
   });
 }
-popupLegal()
+popupLegal();
 //
 /*
  * Generar textos legales
@@ -28,47 +28,50 @@ function legalPage() {
     event.preventDefault(); // Evitamos que se envie formulario por defecto.
 
     const generadorLegal = {
-      social: document.getElementById('input-social').value,
-      comercial: document.getElementById('input-comercial').value,
-      cif: document.getElementById('input-cif').value,
-      direccion: document.getElementById('input-direccion').value,
-      email: document.getElementById('input-email').value,
-      website: document.getElementById('input-website').value,
-      fecha: document.getElementById('input-fecha').value
-    }
+      social: document.getElementById("input-social").value,
+      comercial: document.getElementById("input-comercial").value,
+      cif: document.getElementById("input-cif").value,
+      direccion: document.getElementById("input-direccion").value,
+      email: document.getElementById("input-email").value,
+      website: document.getElementById("input-website").value,
+      fecha: document.getElementById("input-fecha").value,
+    };
+    
+    let previewLegal = {
+      txtSocial: document.querySelectorAll(".txt-social"),
+      txtComercial: document.querySelectorAll(".txt-comercial"),
+      txtCif: document.querySelectorAll(".txt-cif"),
+      txtDireccion: document.querySelectorAll(".txt-direccion"),
+      txtEmail: document.querySelectorAll(".txt-email"),
+      txtWebsite: document.querySelectorAll(".txt-website"),
+      txtFecha: document.querySelectorAll(".txt-fecha"),
+    };
 
-    const txtSocialElements = document.querySelectorAll(".txt-social");
-    txtSocialElements.forEach(function (element) {
+    previewLegal.txtSocial.forEach(function (element) {
       element.textContent = generadorLegal.social;
     });
 
-    const txtComercialElements = document.querySelectorAll(".txt-comercial");
-    txtComercialElements.forEach(function (element) {
+    previewLegal.txtComercial.forEach(function (element) {
       element.textContent = generadorLegal.comercial;
     });
 
-    const txtCifElements = document.querySelectorAll(".txt-cif");
-    txtCifElements.forEach(function (element) {
+    previewLegal.txtCif.forEach(function (element) {
       element.textContent = generadorLegal.cif;
     });
 
-    const txtDireccionElements = document.querySelectorAll(".txt-direccion");
-    txtDireccionElements.forEach(function (element) {
+    previewLegal.txtDireccion.forEach(function (element) {
       element.textContent = generadorLegal.direccion;
     });
 
-    const txtEmailElements = document.querySelectorAll(".txt-email");
-    txtEmailElements.forEach(function (element) {
+    previewLegal.txtEmail.forEach(function (element) {
       element.textContent = generadorLegal.email;
     });
 
-    const txtWebsiteElements = document.querySelectorAll(".txt-website");
-    txtWebsiteElements.forEach(function (element) {
+    previewLegal.txtWebsite.forEach(function (element) {
       element.textContent = generadorLegal.website;
     });
 
-    const txtFechaElements = document.querySelectorAll(".txt-fecha");
-    txtFechaElements.forEach(function (element) {
+    previewLegal.txtFecha.forEach(function (element) {
       element.textContent = generadorLegal.fecha;
     });
 
