@@ -43,7 +43,8 @@
 
               <div class="campo-formulario">
                 <label class="form-label">CIF/NIF:</label>
-                <input type="text" id="input-cif" class="form-input" placeholder="Value" required autocomplete="cc-csc">
+                <input type="text" id="input-cif" class="form-input" placeholder="Value" required autocomplete="cc-csc"
+                pattern="^[0-9XYZ][0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKE]$" maxlength="9">
               </div>
 
               <div class="campo-formulario">
@@ -54,19 +55,22 @@
 
               <div class="campo-formulario">
                 <label class="form-label">Email:</label>
-                <input type="email" id="input-email" class="form-input" placeholder="Value" required
-                  autocomplete="email">
+                <input type="email" id="input-email" class="form-input" placeholder="Value" required autocomplete="email">
+                  <span id="emailError" ></span>
               </div>
 
               <div class="campo-formulario">
                 <label class="form-label">Website:</label>
-                <input type="url" id="input-website" class="form-input" placeholder="Value" required
-                  autocomplete="url">
+                <input type="text" id="input-website" class="form-input" placeholder="Value" required
+                  autocomplete="url" pattern="www\..+">
+                  <span id="websiteError"></span>
+
               </div>
 
               <div class="campo-formulario">
                 <label class="form-label">Fecha:</label>
-                <input type="month" id="input-fecha" class="form-input" placeholder="Value" required>
+                <input type="month" id="input-fecha" class="form-input" placeholder="Value" 
+                min="06-2020" max="12-2024" required>
               </div>
             </div>
 
