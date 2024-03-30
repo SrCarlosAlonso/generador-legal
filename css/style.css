@@ -381,6 +381,13 @@ form#formLegal {
         color: var(--color-text-span);
         opacity: 0.5;
       }
+
+      &:valid{
+        background:#ccffeb;
+      }
+      &:invalid{
+       border: 1px solid #ffe5cc;
+      }
     }
   }
   .btn-row-formulario {

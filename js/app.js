@@ -15,123 +15,151 @@ function popupLegal() {
 }
 popupLegal();
 //
+
 /*
- * Generar textos legales
+ * Formulario legal y print de datos
  */
-function legalPage() {
-  const guardar = document.getElementById("input-guardar");
+
+//Creamos un Listener para que generarDatos se lanze solo despues
+//el DOM se termine de cargar.
+document.addEventListener("DOMContentLoaded", function () {
+  generarDatos();
+});
+
+// Creamos un listener para el boton de envio
+function generarDatos() {
+  const btnExportar = document.getElementById("input-guardar");
+
+  btnExportar.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    extraerDatos();
+  });
+}
+//Extraemos datos y creamos la relacion.
+function extraerDatos() {
+  const inputsForm = {
+    social: document.getElementById("input-social").value,
+    comercial: document.getElementById("input-comercial").value,
+    cif: document.getElementById("input-cif").value,
+    direccion: document.getElementById("input-direccion").value,
+    email: document.getElementById("input-email").value,
+    website: document.getElementById("input-website").value,
+    fecha: document.getElementById("input-fecha").value,
+  };
+
+  const printInputs = {
+    txtSocial: document.querySelectorAll(".txt-social"),
+    txtComercial: document.querySelectorAll(".txt-comercial"),
+    txtCif: document.querySelectorAll(".txt-cif"),
+    txtDireccion: document.querySelectorAll(".txt-direccion"),
+    txtEmail: document.querySelectorAll(".txt-email"),
+    txtWebsite: document.querySelectorAll(".txt-website"),
+    txtFecha: document.querySelectorAll(".txt-fecha"),
+  };
+
+  function relacionVariable(origen, destino) {
+    printInputs[origen].forEach(function (element) {
+      element.textContent = destino;
+    });
+  }
+  // Funcion varible para la relaciones de inputs y preview.
+  relacionVariable("txtSocial", inputsForm.social);
+  relacionVariable("txtComercial", inputsForm.comercial);
+  relacionVariable("txtCif", inputsForm.cif);
+  relacionVariable("txtDireccion", inputsForm.direccion);
+  relacionVariable("txtEmail", inputsForm.email);
+  relacionVariable("txtWebsite", inputsForm.website);
+  relacionVariable("txtFecha", inputsForm.fecha);
+
+  copyResetDatos();
+}
+//
+
+/*
+ * Borrar y copiar datos
+ * Activamos el boton de reset y el boton copiar
+ */
+function copyResetDatos() {
   const reset = document.getElementById("input-reset");
   const copiarPolitica = document.getElementById("btn-copiar-Politica");
   const copiarAviso = document.getElementById("btn-copiar-Aviso");
 
-  guardar.addEventListener("click", function (event) {
-    event.preventDefault(); // Evitamos que se envie formulario por defecto.
-
-    const generadorLegal = {
-      social: document.getElementById("input-social").value,
-      comercial: document.getElementById("input-comercial").value,
-      cif: document.getElementById("input-cif").value,
-      direccion: document.getElementById("input-direccion").value,
-      email: document.getElementById("input-email").value,
-      website: document.getElementById("input-website").value,
-      fecha: document.getElementById("input-fecha").value,
-    };
-    
-    let previewLegal = {
-      txtSocial: document.querySelectorAll(".txt-social"),
-      txtComercial: document.querySelectorAll(".txt-comercial"),
-      txtCif: document.querySelectorAll(".txt-cif"),
-      txtDireccion: document.querySelectorAll(".txt-direccion"),
-      txtEmail: document.querySelectorAll(".txt-email"),
-      txtWebsite: document.querySelectorAll(".txt-website"),
-      txtFecha: document.querySelectorAll(".txt-fecha"),
-    };
-
-    previewLegal.txtSocial.forEach(function (element) {
-      element.textContent = generadorLegal.social;
-    });
-
-    previewLegal.txtComercial.forEach(function (element) {
-      element.textContent = generadorLegal.comercial;
-    });
-
-    previewLegal.txtCif.forEach(function (element) {
-      element.textContent = generadorLegal.cif;
-    });
-
-    previewLegal.txtDireccion.forEach(function (element) {
-      element.textContent = generadorLegal.direccion;
-    });
-
-    previewLegal.txtEmail.forEach(function (element) {
-      element.textContent = generadorLegal.email;
-    });
-
-    previewLegal.txtWebsite.forEach(function (element) {
-      element.textContent = generadorLegal.website;
-    });
-
-    previewLegal.txtFecha.forEach(function (element) {
-      element.textContent = generadorLegal.fecha;
-    });
-
-    //Activamos el boton de reset y el boton copiar
-    reset.removeAttribute("disabled");
-    copiarPolitica.removeAttribute("disabled");
-    copiarPolitica.style.opacity = "1";
-    copiarPolitica.style.cursor = "pointer";
-    copiarAviso.removeAttribute("disabled");
-    copiarAviso.style.opacity = "1";
-    copiarAviso.style.cursor = "pointer";
-  });
+  //Activamos el boton de reset y el boton copiar
+  reset.removeAttribute("disabled");
+  copiarPolitica.removeAttribute("disabled");
+  copiarPolitica.style.opacity = "1";
+  copiarPolitica.style.cursor = "pointer";
+  copiarAviso.removeAttribute("disabled");
+  copiarAviso.style.opacity = "1";
+  copiarAviso.style.cursor = "pointer";
 }
-legalPage();
 //
 
 /*
- * Boton de reset
+ * Validando input form
  */
-function resetDatos() {
-  const reset = document.getElementById("input-reset");
+const form = document.getElementById("formLegal");
+const email = document.getElementById("input-email");
+const emailError = document.getElementById("emailError");
+const website = document.getElementById("input-website");
+const websiteError = document.getElementById("websiteError");
 
-  reset.addEventListener("click", function (event) {
-    event.preventDefault(); // Evitamso que se envie formulario por defecto.
-    //Valor de los inputs
-    const inputSocial = document.getElementById("input-social");
-    const inputComercial = document.getElementById("input-comercial");
-    const inputCif = document.getElementById("input-cif");
-    const inputDireccion = document.getElementById("input-direccion");
-    const inputEmail = document.getElementById("input-email");
-    const inputWebsite = document.getElementById("input-website");
-    const inputFecha = document.getElementById("input-fecha");
+//Validar email
+email.addEventListener("input", () => {
+  if (email.validity.valid) {
+    emailError.textContent = "Válido";
+  } else {
+    showError(email, emailError);
+  }
+});
 
-    //Reset Valor de los inputs
-    inputSocial.value = "";
-    inputComercial.value = "";
-    inputCif.value = "";
-    inputDireccion.value = "";
-    inputEmail.value = "";
-    inputWebsite.value = "";
-    inputFecha.value = "";
+//Validar website
+website.addEventListener("input", () => {
+  if (website.validity.valid) {
+    websiteError.textContent = "Válido";
+  } else {
+    showError(website, websiteError);
+  }
+});
 
-    // Valor de los textos de preview
-    const txtSocial = document.querySelector(".txt-social");
-    const txtComercial = document.querySelector(".txt-comercial");
-    const txtCif = document.querySelector(".txt-cif");
-    const txtDireccion = document.querySelector(".txt-direccion");
-    const txtEmail = document.querySelector(".txt-email");
-    const txtWebsite = document.querySelector(".txt-website");
-    // Reset de los textos de preview
-    txtSocial.textContent = "";
-    txtComercial.textContent = "";
-    txtCif.textContent = "";
-    txtDireccion.textContent = "";
-    txtEmail.textContent = "";
-    txtWebsite.textContent = "";
-  });
+form.addEventListener("submit", (event) => {
+  // Validar email
+  if (!email.validity.valid) {
+    showError(email, emailError);
+    event.preventDefault();
+  }
+
+  // Validar website
+  if (!website.validity.valid) {
+    showError(website, websiteError);
+    event.preventDefault();
+  }
+});
+
+function showError(inputElement, errorElement) {
+  switch (inputElement.id) {
+    case "input-email":
+      if (inputElement.validity.valueMissing) {
+        errorElement.textContent = "Debes introducir un correo electrónico.";
+      } else if (inputElement.validity.typeMismatch) {
+        errorElement.textContent =
+          "El valor introducido debe ser una dirección de correo electrónico válida.";
+      }
+      break;
+    case "input-website":
+      if (inputElement.validity.valueMissing) {
+        errorElement.textContent = "Debes introducir una dirección web.";
+      } else if (inputElement.validity.typeMismatch) {
+        errorElement.textContent =
+          "El valor introducido debe ser una URL válida.";
+      }
+      break;
+    default:
+      errorElement.textContent = "Se ha producido un error.";
+  }
+  errorElement.classList.add("error", "active");
 }
-resetDatos();
-//
 
 /*
  * Boton de copiar textos legales
@@ -184,7 +212,6 @@ function menuLegal() {
     elementoVisible.style.display = "block";
     elementoOculto.style.display = "none";
   }
-
   /*
    * Añadimos un listener en todo el documento para controlar el cick en los botones,
    * Si el btnPolitica es el target se aplica la funcion de toggleVisibilidad
