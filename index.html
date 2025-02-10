@@ -1,13 +1,79 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link type="text/css" rel="stylesheet" href="/src/style.css" />
+  <title>Vite + TS</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>Generador de Legal</h1>
+      <p>Generador de documentos legales</p>
+    </header>
+    <main id="app">
+      <span>This is a placeholder for the main content.</span>
+      <form id="formLegal" class="inner-item">
+
+        <div class="container-inputs-form">
+          <div class="campo-formulario">
+            <label class="form-label">Denom. social:</label>
+            <input type="text" id="input-social" class="form-input" placeholder="Value" required
+              autocomplete="organization">
+          </div>
+
+          <div class="campo-formulario">
+            <label class="form-label">Nombre comercial:</label>
+            <input type="text" id="input-comercial" class="form-input" placeholder="Value" required
+              autocomplete="organization">
+          </div>
+
+          <div class="campo-formulario">
+            <label class="form-label">CIF/NIF:</label>
+            <input type="text" id="input-cif" class="form-input" placeholder="Value" required autocomplete="cc-csc"
+              pattern="^[0-9XYZ][0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKE]$" maxlength="9">
+          </div>
+
+          <div class="campo-formulario">
+            <label class="form-label">Dirección:</label>
+            <input type="text" id="input-direccion" class="form-input" placeholder="Value" required
+              autocomplete="address-level1">
+          </div>
+
+          <div class="campo-formulario">
+            <label class="form-label">Email:</label>
+            <input type="email" id="input-email" class="form-input" placeholder="Value" required autocomplete="email">
+            <span id="emailError"></span>
+          </div>
+
+          <div class="campo-formulario">
+            <label class="form-label">Website:</label>
+            <input type="text" id="input-website" class="form-input" placeholder="Value" required autocomplete="url"
+              pattern="www\..+">
+            <span id="websiteError"></span>
+
+          </div>
+
+          <div class="campo-formulario">
+            <label class="form-label">Fecha:</label>
+            <input type="month" id="input-fecha" class="form-input" placeholder="Value" min="06-2020" max="12-2024"
+              required>
+          </div>
+        </div>
+
+        <div class="btn-row-formulario">
+          <button type="submit" id="input-guardar">Generar documento</button>
+          <button id="input-reset" disabled>Borrar datos</button>
+        </div>
+
+      </form>
+    </main>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
