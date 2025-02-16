@@ -1,18 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&display=swap");
+
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--font-family);
   font-size: 1rem;
   line-height: 24px;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(230, 230, 230, 0.87);
-  background-color: #242424;
+  color: var(--text-color);
+  background-color: var(--blue-900);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  /* Colors */
+  --blue-50: #eaecee;
+  --blue-100: #bec3c9;
+  --blue-200: #9ea7af;
+  --blue-300: #727e8a;
+  --blue-400: #566574;
+  --blue-500: #2c3f51;
+  --blue-600: #28394a;
+  --blue-700: #1f2d3a;
+  --blue-800: #18232d;
+  --blue-900: #121a22;
+
+  --orange-400: #e09450;
+  --orange-500: #e67e21;
+  --orange-600: #d35400;
+
+  --alert-success: #6bcd75;
+  --alert-info: #1275ea;
+  --alert-danger: #ff4545;
+
+  --input-background: #fffacc;
+  --input-border: #efeabb;
+  --input-color: #48441d;
+
+  --text-color: #f1f1f1;
+
+  --font-size-s: 0.75rem;
+  --font-size-m: 0.875rem;
+  --font-family: "Aleo", Helvetica, Arial, sans-serif;
+  /* Spacing */
+  --spacing-s: 0.25rem;
+  --spacing-m: 0.5rem;
+  --spacing-l: 1rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 4rem;
+
+  --br-xs: 0.125rem;
+  --br-s: 0.25rem;
+  --br-m: 0.5rem;
+  --br-l: 1rem;
+  --br-xl: 2rem;
+
+  --padding-s: 0.25rem;
+  --padding-m: 0.5rem;
+  --padding-l: 1rem;
+  --padding-xl: 2rem;
+  --padding-xxl: 4rem;
 }
 *,
 *:before,
@@ -25,16 +75,80 @@ html {
   font-size: 62.5%;
 }
 body {
-  display: grid;
   place-content: center;
   min-height: 100vh;
+  padding: 2rem;
 }
-
 .wrapper {
   width: 100%;
-  max-width: 1024px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem 3rem;
-  background: #2e2e2e;
-  border-radius: .6rem;
+}
+main {
+  background-color: red;
+  border-radius: var(--br-l);
+  overflow: hidden;
+  display: flex;
+}
+#content {
+  width: 65%;
+  background-color: var(--blue-700);
+  padding: var(--padding-xl);
+}
+.column-3 {
+  display: grid;
+  gap: var(--spacing-m);
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-between;
+}
+.column-2 {
+  display: grid;
+  column-gap: var(--spacing-m);
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+}
+.input-container {
+  width: 100%;
+  display: flex;
+  gap: var(--spacing-m);
+  font-size: var(--font-size-l);
+  align-items: baseline;
+  padding: var(--padding-m) 0px;
+  label {
+    flex-shrink: 0;
+    font-style: italic;
+  }
+}
+.input-container input {
+  width: 100%;
+  flex-grow: 1;
+  border: none;
+  background-color: var(--input-background);
+  color: var(--input-color);
+  text-align: center;
+  border-radius: var(--br-xs);
+  font-size: var(--font-size-m);
+  padding: var(--padding-s);
+  font-family: var(--font-family);
+
+  &::placeholder {
+    font-style: italic;
+    font-family: var(--font-family);
+  }
+}
+.input-xl {
+  width: 280px;
+}
+input#nif {
+  max-width: 80px;
+}
+.container-submit {
+  grid-column: span 3;
+  display: flex;
+  gap: var(--spacing-s);
+}
+#preview {
+  width: 35%;
+  background-color: var(--blue-600);
+  padding: var(--padding-xl);
 }
