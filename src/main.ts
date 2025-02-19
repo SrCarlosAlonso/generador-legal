@@ -12,6 +12,10 @@ const DOM_ELEMENTS = {
   "email": $("input-email"),
   "website": $("input-website"),
   "fecha": $("input-fecha"),
+  "btn-toggle-privacidad": $("btn-toggle-privacidad"),
+  "btn-toggle-legal": $("btn-toggle-legal"),
+  "txt-toggle-privacidad": $("txt-toggle-privacidad"),
+  "txt-toggle-legal": $("txt-toggle-legal"),
 }
 
 

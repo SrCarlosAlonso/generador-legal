@@ -19,53 +19,66 @@
     <main id="app">
       <section id="content">
         <div class="form-wrapper">
-          <h2>Introduce tu datos fiscales</h2>
+          <h2>Introduce tu <br> datos fiscales</h2>
           <form id="formLegal">
             <div class="column-3">
               <div class="input-container">
                 <label for="social">Den. social:</label>
-                <input type="text" name="social" id="social" placeholder="Empresa Ejemplo. SL">
+                <input type="text" name="social" id="input-social" placeholder="Empresa Ejemplo. SL">
               </div>
               <div class="input-container">
                 <label for="">Nombre comercial:</label>
-                <input type="text" name="" id="nombre-comercial" placeholder="Empresa Ejemplo">
+                <input type="text" name="" id="input-comercial" placeholder="Empresa Ejemplo">
               </div>
               <div class="input-container ">
                 <label for="">CIF / NIF:</label>
-                <input type="text" name="" id="nif" placeholder="123456789X">
+                <input type="text" name="" id="input-cif" placeholder="123456789X">
               </div>
             </div>
             <div class="column-2">
               <div class="input-container">
                 <label for="email">Email:</label>
-                <input type="email" name="email" id="mail" placeholder="email@empresa.com">
+                <input type="email" name="email" id="input-email" placeholder="email@empresa.com">
               </div>
               <div class="input-container ">
                 <label for="">Página web:</label>
-                <input type="text" name="" id="website" placeholder="www.empresaejemplo.es">
+                <input type="text" name="" id="input-website" placeholder="www.empresaejemplo.es">
               </div>
               <div class="input-container ">
                 <label for="">Dirección:</label>
-                <input type="text" name="" id="direccion"
+                <input type="text" name="" id="input-direccion"
                   placeholder="Calle de Prueba 456, 1-2,  08000 - Barcelona, España">
               </div>
               <div class="input-container ">
                 <label for="">Fecha del documento:</label>
-                <input type="text" name="" id="fecha" placeholder="Febrero 2025">
+                <input type="text" name="" id="input-fecha" placeholder="Febrero 2025">
               </div>
             </div>
             <div class="container-submit ">
               <button type="submit">Generar texto legal</button>
+              <span id="message-alert" class="alert-success alert-error aler-information"> Your alerts will appear here.</span></span>
               <button id="input-reset" disabled>Borrar datos</button>
             </div>
 
           </form>
         </div>
+        <div id="container-toggle">
+          <nav>
+            <a id="btn-toggle-privacidad" class="active">Ver Politica de Privacidad</a>
+            <a id="btn-toggle-legal">Ver Avíso Legal</a>
+          </nav>
+          <div id="txt-toggle-privacidad" class="active">
+            <h4>Politica de Privacidad... the legal text will appear here</h4>
+          </div>
+          <div id="txt-toggle-legal" class="hidden">
+            <h4>Aviso Legal... the legal text will appear here</h4>
+          </div>
+        </div>
 
       </section>
 
       <aside id="preview">
-        <h3>Vista previa de tus datos fiscales</h3>
+        <h3>Vista previa <br> de tus datos fiscales</h3>
         <ul>
           <li>Denominación social: <span id="social"> Empresa Ejemplo. SL </span></li>
           <li>Nombre comercial: <span id="nombre-comercial"> Empresa Ejemplo. SL </span></li>

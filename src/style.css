@@ -95,25 +95,29 @@ main {
   background-color: var(--blue-700);
   padding: var(--padding-xl);
 }
+.hidden {
+  display: none;
+}
 .column-3 {
   display: grid;
-  gap: var(--spacing-m);
+  gap: 16px;
   grid-template-columns: repeat(3, auto);
-  justify-content: space-between;
 }
 .column-2 {
   display: grid;
-  column-gap: var(--spacing-m);
+  column-gap: 16px;
   grid-template-columns: repeat(2, 1fr);
   justify-content: space-between;
 }
+/* Styling for the form */
 .input-container {
   width: 100%;
   display: flex;
-  gap: var(--spacing-m);
+  flex-direction: column;
   font-size: var(--font-size-l);
   align-items: baseline;
   padding: var(--padding-m) 0px;
+
   label {
     flex-shrink: 0;
     font-style: italic;
@@ -142,11 +146,47 @@ main {
 input#nif {
   max-width: 80px;
 }
+/* Styling for the submit button */
 .container-submit {
   grid-column: span 3;
-  display: flex;
+  display: flex;  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   gap: var(--spacing-s);
+  margin: 1rem 0
 }
+/* Styling for the toggle button and the text */
+#container-toggle {
+  overflow: hidden;
+  border-radius: var(--br-l);
+}
+#container-toggle nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--blue-500);
+
+  & a:first-child {
+    border-right: 1px solid var(--orange-500);
+  }
+}
+#container-toggle nav a {
+  width: 100%;
+  text-align: center;
+  padding: var(--padding-l);
+
+  &.active {
+    background-color: #334A5E;
+  }
+}
+
+#txt-toggle-privacidad,
+#txt-toggle-legal {
+  background-color: #243340;
+  padding: var(--padding-xl) var(--padding-l);
+}
+/* Styling for the preview section */
 #preview {
   width: 35%;
   background-color: var(--blue-600);
