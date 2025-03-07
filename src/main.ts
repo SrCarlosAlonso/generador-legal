@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM is ready!");
 
-  handleInputs(DOM_INPUTS);
+  handleInputs(DOM_ELEMENTS);
 });
 
 const $ = (id: string) => {
@@ -12,7 +12,7 @@ const $ = (id: string) => {
   return el;
 };
 
-const DOM_INPUTS = {
+const DOM_ELEMENTS = {
   social: $("input-social") as HTMLInputElement,
   nombreComercial: $("input-comercial") as HTMLInputElement,
   cif: $("input-cif") as HTMLInputElement,
@@ -30,6 +30,7 @@ const DOM_INPUTS = {
 function listenerInput(input : HTMLInputElement) {
   input.addEventListener("change", () => {
     console.log(input.value);
+    handelPreview(input.id, input.value);
   });
 }
 
@@ -38,5 +39,11 @@ function handleInputs(input : Object) {
 }
 
 // 1. let's print the data after the input changed and the button generate clicked.
+const handelPreview = (id: string, value: string) => {
+  const name = id.toString().split("-")[1];
+  const elementPrv = $(`prv-${name}`);
+  console.log(elementPrv.textContent = value);
+};
+
 // 2. handelButtons. when do you click on generate button. the program will save the data in a new object, then we take the new inforation objecto to generate the legal document.
 // 2.1 if the user clilc eb delete, all the data will be deleted.
