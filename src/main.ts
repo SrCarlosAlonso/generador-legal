@@ -25,11 +25,14 @@ const DOM_ELEMENTS = {
   btnLegal: $("btn-toggle-legal") as HTMLButtonElement,
   txtPrivacidad: $("txt-toggle-privacidad") as HTMLDivElement,
   txtLegal: $("txt-toggle-legal") as HTMLDivElement,
+
+  btnGenerate: document.querySelector("button[type='submit']") as HTMLButtonElement,
+  btnReset: $("input-reset") as HTMLButtonElement,
+
 };
 
 function listenerInput(input : HTMLInputElement) {
   input.addEventListener("change", () => {
-    console.log(input.value);
     handelPreview(input.id, input.value);
   });
 }
@@ -42,8 +45,49 @@ function handleInputs(input : Object) {
 const handelPreview = (id: string, value: string) => {
   const name = id.toString().split("-")[1];
   const elementPrv = $(`prv-${name}`);
-  console.log(elementPrv.textContent = value);
+  elementPrv.textContent = value;
 };
 
-// 2. handelButtons. when do you click on generate button. the program will save the data in a new object, then we take the new inforation objecto to generate the legal document.
+// 2. handelButtons. when do you click on generate button. the program will save the data in a new object, then we take the new information object to generate the legal document.
+type ObjData = {
+  social: string;
+  nombreComercial: string;
+  cif: string;
+  direccion: string;
+  email: string;
+  website: string;
+  fecha: string;
+};
+
+let OBJ_DATA: ObjData = {
+  social: "",
+  nombreComercial: "",
+  cif: "",
+  direccion: "",
+  email: "",
+  website: "",
+  fecha: "",
+};
+
+const handleGenerate = (e: Event) => {
+  e.preventDefault();
+  // 1. take the value from inputs.value
+  const OBJ_DATA_TEMP: ObjData = {
+    social: DOM_ELEMENTS.social.value,
+    nombreComercial: DOM_ELEMENTS.nombreComercial.value,
+    cif: DOM_ELEMENTS.cif.value,
+    direccion: DOM_ELEMENTS.direccion.value,
+    email: DOM_ELEMENTS.email.value,
+    website: DOM_ELEMENTS.website.value,
+    fecha: DOM_ELEMENTS.fecha.value,
+  };
+  console.log(`Data saved in OBJ_DATA_TEMP, ${OBJ_DATA_TEMP}`);
+  // 2. check thif the alue are not empty
+  // 3. if the valuea are not empty, then we save the infomation in the objecto.
+  // 4. When the information is saved, we take the the object to pritn the legal document.
+  OBJ_DATA = OBJ_DATA_TEMP;
+  console.log(`Data saved in OBJ_DATA, ${OBJ_DATA}`);
+};
+DOM_ELEMENTS.btnGenerate.addEventListener("click", handleGenerate);
+
 // 2.1 if the user clilc eb delete, all the data will be deleted.
