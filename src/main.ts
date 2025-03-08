@@ -26,18 +26,19 @@ const DOM_ELEMENTS = {
   txtPrivacidad: $("txt-toggle-privacidad") as HTMLDivElement,
   txtLegal: $("txt-toggle-legal") as HTMLDivElement,
 
-  btnGenerate: document.querySelector("button[type='submit']") as HTMLButtonElement,
+  btnGenerate: document.querySelector(
+    "button[type='submit']"
+  ) as HTMLButtonElement,
   btnReset: $("input-reset") as HTMLButtonElement,
-
 };
 
-function listenerInput(input : HTMLInputElement) {
+function listenerInput(input: HTMLInputElement) {
   input.addEventListener("change", () => {
     handelPreview(input.id, input.value);
   });
 }
 
-function handleInputs(input : Object) {
+function handleInputs(input: Object) {
   Object.values(input).forEach((input) => listenerInput(input));
 }
 
@@ -82,12 +83,31 @@ const handleGenerate = (e: Event) => {
     fecha: DOM_ELEMENTS.fecha.value,
   };
   console.log(`Data saved in OBJ_DATA_TEMP, ${OBJ_DATA_TEMP}`);
-  // 2. check thif the alue are not empty
+  // 2. check thif the value are not empty
+  if (Object.values(OBJ_DATA_TEMP).some(value => value === "")) {
+    console.log("Please fill all the fields");
+    return;
+  }
   // 3. if the valuea are not empty, then we save the infomation in the objecto.
-  // 4. When the information is saved, we take the the object to pritn the legal document.
   OBJ_DATA = OBJ_DATA_TEMP;
-  console.log(`Data saved in OBJ_DATA, ${OBJ_DATA}`);
+  // 4. When the information is saved, we take the the object to pritn the legal document.
+  generateDocument(OBJ_DATA);
 };
+
 DOM_ELEMENTS.btnGenerate.addEventListener("click", handleGenerate);
+
+const generateDocument = (data: ObjData) => {
+  const { social, nombreComercial, cif, direccion, email, website, fecha } = data;
+
+  console.log(`The thata are:
+    social: ${social},
+    nombreComercial: ${nombreComercial},
+    cif: ${cif},
+    direccion: ${direccion},
+    email: ${email},
+    website: ${website},
+    fecha: ${fecha}
+    `);
+};
 
 // 2.1 if the user clilc eb delete, all the data will be deleted.
