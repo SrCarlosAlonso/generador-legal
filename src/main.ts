@@ -1,7 +1,10 @@
+import { getData } from "./getData";
+
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM is ready!");
 
   handleInputs(DOM_ELEMENTS);
+  getData()
 });
 
 const $ = (id: string) => {
