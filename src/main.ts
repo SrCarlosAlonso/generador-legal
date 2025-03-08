@@ -84,7 +84,7 @@ const handleGenerate = (e: Event) => {
   };
   console.log(`Data saved in OBJ_DATA_TEMP, ${OBJ_DATA_TEMP}`);
   // 2. check thif the value are not empty
-  if (Object.values(OBJ_DATA_TEMP).some(value => value === "")) {
+  if (Object.values(OBJ_DATA_TEMP).some((value) => value === "")) {
     console.log("Please fill all the fields");
     return;
   }
@@ -97,7 +97,8 @@ const handleGenerate = (e: Event) => {
 DOM_ELEMENTS.btnGenerate.addEventListener("click", handleGenerate);
 
 const generateDocument = (data: ObjData) => {
-  const { social, nombreComercial, cif, direccion, email, website, fecha } = data;
+  const { social, nombreComercial, cif, direccion, email, website, fecha } =
+    data;
 
   console.log(`The thata are:
     social: ${social},
