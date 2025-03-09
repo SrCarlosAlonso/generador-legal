@@ -1,4 +1,4 @@
-import { convertMD } from "./getData";
+import { convertMD } from "./helpers/getData";
 import avisoLegal from "./docs/aviso_v1.md?raw";
 import politicaPrivacidad from "./docs/privacidad_v1.md?raw";
 
