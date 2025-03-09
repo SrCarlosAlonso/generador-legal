@@ -1,10 +1,14 @@
-import { getData } from "./getData";
+import { convertMD } from "./getData";
+import avisoLegal from "./docs/aviso_v1.md?raw";
+import politicaPrivacidad from "./docs/privacidad_v1.md?raw";
 
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM is ready!");
 
   handleInputs(DOM_ELEMENTS);
-  getData()
+
+  convertMD( avisoLegal )
+  convertMD( politicaPrivacidad )
 });
 
 const $ = (id: string) => {
@@ -73,7 +77,7 @@ let OBJ_DATA: ObjData = {
   fecha: "",
 };
 
-const handleGenerate = (e: Event) => {
+const handleBtnGenerate = (e: Event) => {
   e.preventDefault();
   // 1. take the value from inputs.value
   const OBJ_DATA_TEMP: ObjData = {
@@ -97,7 +101,7 @@ const handleGenerate = (e: Event) => {
   generateDocument(OBJ_DATA);
 };
 
-DOM_ELEMENTS.btnGenerate.addEventListener("click", handleGenerate);
+DOM_ELEMENTS.btnGenerate.addEventListener("click", handleBtnGenerate);
 
 const generateDocument = (data: ObjData) => {
   const { social, nombreComercial, cif, direccion, email, website, fecha } =

@@ -1,11 +1,10 @@
 import { marked } from "marked";
-import aviso from "./docs/aviso_v1.md?raw";
 
-export async function getData() {
+export async function convertMD( data : string) {
   const html = document.createElement("div");
 
   // Verificar si aviso es una promesa
-  const mdContent = typeof aviso === 'string' ? aviso : await aviso;
+  const mdContent = typeof data === 'string' ? data : await data;
 
   html.innerHTML = marked.parse(mdContent) as string;
   console.log(html.innerHTML);
