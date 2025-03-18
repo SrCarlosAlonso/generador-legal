@@ -98,6 +98,16 @@ main {
 .hidden {
   display: none;
 }
+.fade {
+  transition: opacity 0.25s ease-in-out;
+  opacity: 0;
+}
+.fade-out {
+  opacity: 0;
+}
+.fade-in {
+  opacity: 1;
+}
 .column-3 {
   display: grid;
   gap: 16px;
@@ -159,6 +169,8 @@ input#nif {
 #container-toggle {
   overflow: hidden;
   border-radius: var(--br-l);
+  background-color: #243340;
+
 }
 #container-toggle nav {
   display: flex;
@@ -175,6 +187,8 @@ input#nif {
   width: 100%;
   text-align: center;
   padding: var(--padding-l);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 
   &.active {
     background-color: #334A5E;
@@ -183,8 +197,8 @@ input#nif {
 
 #txt-toggle-privacidad,
 #txt-toggle-legal {
-  background-color: #243340;
   padding: var(--padding-xl) var(--padding-l);
+  transition: all 0.3s ease;
 }
 /* Styling for the preview section */
 #preview {

@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM is ready!");
 
   handleInputs(DOM_ELEMENTS);
+  listenerToggleBtn();
 });
 
 const $ = (id: string) => {
@@ -35,6 +36,9 @@ const DOM_ELEMENTS = {
     "button[type='submit']"
   ) as HTMLButtonElement,
   btnReset: $("input-reset") as HTMLButtonElement,
+
+  txtTogglePrivacidad: $("txt-toggle-privacidad"),
+  txtToggleLegal: $("txt-toggle-legal"),
 };
 
 function listenerInput(input: HTMLInputElement) {
@@ -106,3 +110,51 @@ async function generateDocument() {
 }
 
 // 2.1 if the user clilc eb delete, all the data will be deleted.
+
+// 2.2 Toggle button for Privacidad and Legal
+
+function listenerToggleBtn() {
+  const btnPrivacidad = DOM_ELEMENTS.btnPrivacidad;
+  const txtPrivacidad = DOM_ELEMENTS.txtPrivacidad;
+  const btnLegal = DOM_ELEMENTS.btnLegal;
+  const txtLegal = DOM_ELEMENTS.txtLegal;
+  function toggleVisibility(
+    btnActive: HTMLButtonElement,
+    txtActive: HTMLDivElement,
+    btnInactive: HTMLButtonElement,
+    txtInactive: HTMLDivElement
+  ) {
+    const isActive = btnActive.classList.contains("active");
+    //
+    if (!isActive) {
+      btnActive.classList.add("active");
+      btnInactive.classList.remove("active");
+
+      txtInactive.classList.add("fade-out");
+
+      setTimeout(() => {
+        txtInactive.classList.add("hidden");
+        txtInactive.classList.remove("active");
+
+        txtActive.classList.remove("hidden");
+        txtActive.classList.add("fade");
+
+        setTimeout(() => {
+          txtActive.classList.add("fade-in");
+          txtActive.classList.remove("fade-out");
+
+          setTimeout(() => {
+            txtActive.classList.add("active");
+          }, 200);
+        }, 20);
+      }, 250);
+    }
+    //
+  }
+  btnPrivacidad.addEventListener("click", () =>
+    toggleVisibility(btnPrivacidad, txtPrivacidad, btnLegal, txtLegal)
+  );
+  btnLegal.addEventListener("click", () =>
+    toggleVisibility(btnLegal, txtLegal, btnPrivacidad, txtPrivacidad)
+  );
+}
