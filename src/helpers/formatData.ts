@@ -5,7 +5,7 @@ export async function convertMD(data: string, content: ObjData) {
   const { social, nombreComercial, cif, direccion, email, website, fecha } =
     content;
 
-  const newData: string = await marked(data);
+    const newData: string = await marked(data);
 
   const temp = document.createElement("div");
   temp.innerHTML = newData;
@@ -23,5 +23,5 @@ export async function convertMD(data: string, content: ObjData) {
   print.innerHTML = replace;
 
   // return footer.appendChild(print);
-  return print;
+  return print as HTMLElement;
 }

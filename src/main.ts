@@ -93,8 +93,16 @@ const handleBtnGenerate = (e: Event) => {
 DOM_ELEMENTS.btnGenerate.addEventListener("click", handleBtnGenerate);
 
 async function generateDocument() {
-  console.log(await convertMD(avisoLegal, OBJ_DATA));
-  console.log(await convertMD(politicaPrivacidad, OBJ_DATA));
-};
+  // Print the data in the container
+  const contentPrivacidad = await convertMD(politicaPrivacidad, OBJ_DATA);
+  const containerPrivacidad = DOM_ELEMENTS.txtTogglePrivacidad;
+  containerPrivacidad.innerText = "";
+  containerPrivacidad.appendChild(contentPrivacidad);
+
+  const contentLegal = await convertMD(avisoLegal, OBJ_DATA);
+  const containerLegal = DOM_ELEMENTS.txtToggleLegal;
+  containerLegal.innerText = "";
+  containerLegal.appendChild(contentLegal);
+}
 
 // 2.1 if the user clilc eb delete, all the data will be deleted.
