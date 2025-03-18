@@ -1,4 +1,5 @@
-import { convertMD } from "./helpers/getData";
+import { ObjData } from "./helpers/customTypes";
+import { convertMD } from "./helpers/formatData";
 import avisoLegal from "./docs/aviso_v1.md?raw";
 import politicaPrivacidad from "./docs/privacidad_v1.md?raw";
 
@@ -6,9 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM is ready!");
 
   handleInputs(DOM_ELEMENTS);
-
-  convertMD( avisoLegal )
-  convertMD( politicaPrivacidad )
 });
 
 const $ = (id: string) => {
@@ -57,15 +55,6 @@ const handelPreview = (id: string, value: string) => {
 };
 
 // 2. handelButtons. when do you click on generate button. the program will save the data in a new object, then we take the new information object to generate the legal document.
-type ObjData = {
-  social: string;
-  nombreComercial: string;
-  cif: string;
-  direccion: string;
-  email: string;
-  website: string;
-  fecha: string;
-};
 
 let OBJ_DATA: ObjData = {
   social: "",
@@ -98,24 +87,14 @@ const handleBtnGenerate = (e: Event) => {
   // 3. if the valuea are not empty, then we save the infomation in the objecto.
   OBJ_DATA = OBJ_DATA_TEMP;
   // 4. When the information is saved, we take the the object to pritn the legal document.
-  generateDocument(OBJ_DATA);
+  generateDocument();
 };
 
 DOM_ELEMENTS.btnGenerate.addEventListener("click", handleBtnGenerate);
 
-const generateDocument = (data: ObjData) => {
-  const { social, nombreComercial, cif, direccion, email, website, fecha } =
-    data;
-
-  console.log(`The thata are:
-    social: ${social},
-    nombreComercial: ${nombreComercial},
-    cif: ${cif},
-    direccion: ${direccion},
-    email: ${email},
-    website: ${website},
-    fecha: ${fecha}
-    `);
+async function generateDocument() {
+  console.log(await convertMD(avisoLegal, OBJ_DATA));
+  console.log(await convertMD(politicaPrivacidad, OBJ_DATA));
 };
 
 // 2.1 if the user clilc eb delete, all the data will be deleted.
