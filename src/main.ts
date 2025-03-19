@@ -1,7 +1,7 @@
-import { ObjData } from "./helpers/customTypes";
-import { convertMD } from "./helpers/formatData";
-import avisoLegal from "./docs/aviso_v1.md?raw";
-import politicaPrivacidad from "./docs/privacidad_v1.md?raw";
+import { ObjData } from "@helpers/customTypes";
+import { convertMD } from "@helpers/formatData";
+import avisoLegal from "@docs/aviso_v1.md?raw";
+import politicaPrivacidad from "@docs/privacidad_v1.md?raw";
 
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM is ready!");

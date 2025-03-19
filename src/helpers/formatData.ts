@@ -1,5 +1,5 @@
 import { marked } from "marked";
-import { ObjData } from "./customTypes";
+import { ObjData } from "@helpers/customTypes.ts";
 
 export async function convertMD(data: string, content: ObjData) {
   const { social, nombreComercial, cif, direccion, email, website, fecha } =
