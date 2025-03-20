@@ -15,6 +15,9 @@
 4. Añadir botonnes para copiar el texto generado (cada uno con su propio contenido).
 5. Fix styles y repasar responsive.
 6. Guardar versiones de los documentos en localStorage. Tener la opcion de hacer el CRUD.
+7. Mostrar alertas (error, info y success) en la pantalla.
+8. Mostrar las plantillas por defecto con textos de ejemplo.
+9. En la pestaña de vista previa an1adir tambien botnes de guardar y descargar.
 
 ## Ideas
 1. Valorar la funcionalidad de subir archivos MD para generar textos personalizados.
