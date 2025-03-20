@@ -21,7 +21,6 @@ export async function convertMD(data: string, content: ObjData) {
 
   const print = document.createElement("div");
   print.innerHTML = replace;
-
   // return footer.appendChild(print);
   return print as HTMLElement;
 }
