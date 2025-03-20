@@ -48,7 +48,9 @@
   --font-size-m: 0.875rem;
   --font-size-l: 1rem;
   --font-size-xl: 1.25rem;
-  --font-size-xxl: 3.8rem;
+  --font-size-2xl: 2.1rem;
+  --font-size-3xl: 2.5rem;
+  --font-size-4xl: 3.2rem;
   --font-family: "Aleo", Helvetica, Arial, sans-serif;
   /* Spacing */
   --spacing-s: 0.25rem;
@@ -61,7 +63,7 @@
   --br-s: 0.25rem;
   --br-m: 0.5rem;
   --br-l: 1rem;
-  --br-xl: 2rem;
+  --br-xl: 2.5rem;
 
   --padding-s: 0.25rem;
   --padding-m: 0.5rem;
@@ -90,8 +92,7 @@ body {
   margin: 0 auto;
 }
 main {
-  background-color: red;
-  border-radius: var(--br-l);
+  border-radius: var(--br-xl);
   overflow: hidden;
   display: flex;
 }
@@ -125,10 +126,10 @@ main {
   justify-content: space-between;
 }
 /* Styling texts*/
-h1 {
+h1.title {
   width: 100%;
   max-width: 580px;
-  font-size: var(--font-size-xxl);
+  font-size: var(--font-size-4xl);
   font-weight: bold;
   color: var(--orange-500);
   line-height: 1;
@@ -154,13 +155,19 @@ header {
 }
 
 /* Styling for the form */
+h2.form-title {
+  font-size: var(--font-size-3xl);
+  line-height: 1;
+  font-weight: bold;
+  color: var(--orange-500);
+}
 .input-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   font-size: var(--font-size-l);
   align-items: baseline;
-  padding: var(--padding-m) 0px;
+  padding: 4px 0px;
 
   label {
     flex-shrink: 0;
@@ -190,38 +197,89 @@ header {
 input#nif {
   max-width: 80px;
 }
-/* Styling for the submit button */
+/* Styling for the Container Submit */
 .container-submit {
   grid-column: span 3;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  gap: var(--spacing-s);
+  align-items: stretch;
+  gap: var(--spacing-xl);
+  border-top: 1px solid var(--blue-600);
+  border-bottom: 1px solid var(--blue-600);
   margin: 1rem 0;
+  padding: 1rem 0;
 }
 .container-submit button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
   padding: 8px 16px;
-  border-radius: 4px;
+  border-radius: var(--br-s);
   border: none;
   font-family: var(--font-family);
   font-size: 14px;
   line-height: 19px;
   transition: filter 0.3s ease;
   cursor: pointer;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
   &:hover {
     filter: brightness(1.3);
   }
+
   &[type="submit"] {
     background-color: var(--orange-500);
     color: var(--white);
   }
-}
 
+  &#input-reset {
+    background-color: var(--alert-danger);
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      img {
+        opacity: 0.5;
+      }
+      &:hover {
+        filter: none;
+      }
+    }
+  }
+}
+#message-alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  min-height: 36px;
+  border: 1px dashed;
+  border-radius: var(--br-m);
+
+  &.alert-success {
+    border-color: var(--alert-success);
+    color: var(--alert-success);
+  }
+  &.alert-error {
+    border-color: var(--alert-danger);
+    color: var(--alert-danger);
+  }
+  &.alert-information {
+    border-color: var(--alert-info);
+    color: var(--alert-info);
+  }
+}
 /* Styling for the toggle button and the text */
 #container-toggle {
   overflow: hidden;
-  border-radius: var(--br-l);
+  border-radius: var(--br-m);
   background-color: #243340;
 }
 #container-toggle nav {
@@ -234,27 +292,125 @@ input#nif {
   & a:first-child {
     border-right: 1px solid var(--orange-500);
   }
+  img {
+    width: 42px;
+    height: 42px;
+    padding: 8px 0px;
+    opacity: 0.5;
+    border-bottom: 2px solid transparent;
+    border-radius: var(--br-m);
+    transition: opacity 0.3s ease, border-bottom 50ms ease,
+      background-color 50ms ease;
+
+    &:hover {
+      border-bottom: 2px solid #2c4052d8;
+      background-color: #cef9d31a;
+    }
+
+    &:active {
+      border-bottom: 2px solid #2c4052;
+      background-color: #cef9d330;
+    }
+  }
 }
 #container-toggle nav a {
   width: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   padding: var(--padding-l);
+  font-size: 19px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, filter 0.5s ease;
 
   &.active {
     background-color: #334a5e;
+    img {
+      opacity: 1;
+    }
   }
 }
-
+#container-texts {
+  padding: 1rem 1rem;
+}
 #txt-toggle-privacidad,
 #txt-toggle-legal {
-  padding: var(--padding-xl) var(--padding-l);
+  min-height: 250px;
+  max-height: 250px;
+  overflow-y: scroll;
   transition: all 0.3s ease;
+
+}
+/* ---------- Styling for the preview legal text ---------- */
+.style-preview{
+  font-size: 85%;
+  p{
+    font-weight: 300;
+  }
+  h1,h2,h3,h4,h5,h6{
+    margin: 4px 0px;
+  }
+}
+/* ---------- Scrollbar ---------- */
+#txt-toggle-privacidad::-webkit-scrollbar,
+#txt-toggle-legal::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+#txt-toggle-privacidad::-webkit-scrollbar-track,
+#txt-toggle-legal::-webkit-scrollbar-track {
+  background-color: #28394A;
+  border-radius: 10px;
+}
+#txt-toggle-privacidad::-webkit-scrollbar-thumb,
+#txt-toggle-legal::-webkit-scrollbar-thumb {
+  background-color: #334A5E;
+  border-radius: 10px;
+  border: 3px solid #28394A;
+}
+#txt-toggle-privacidad::-webkit-scrollbar-thumb:hover,
+#txt-toggle-legal::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+#txt-toggle-privacidad,
+#txt-toggle-legal {
+  scrollbar-color: #334A5E #28394A;
+  scrollbar-width: thin;
 }
 /* Styling for the preview section */
+h3.preview-title {
+  font-size: var(--font-size-2xl);
+  line-height: 1;
+  font-weight: bold;
+  color: var(--orange-400);
+}
 #preview {
   width: 35%;
   background-color: var(--blue-600);
   padding: var(--padding-xl);
+}
+#preview ul {
+  list-style: none;
+  padding: 0;
+}
+#preview li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  gap: var(--spacing-s);
+  padding: 4px 0px;
+  font-style: italic;
+  font-weight: 300;
+
+  span {
+    padding: 4px 8px;
+    border-radius: var(--br-s);
+    background-color: #e1ffcc;
+    font-style: normal;
+    font-weight: 400;
+    color: #48441d;
+  }
 }

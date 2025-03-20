@@ -5,21 +5,22 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link type="text/css" rel="stylesheet" href="/src/style.css" />
+  <link type="text/css" rel="stylesheet" href="/src/assets/css/style.css" />
   <title>Vite + TS</title>
 </head>
 
 <body>
   <div class="wrapper">
     <header>
-      <h1>Generador de textos <em>{placeholder}</em> legales
+      <h1 class="title">Generador de textos <em>{placeholder}</em> legales
       </h1>
-      <p>Nota Legal: <strong>No hacemos NADA con tus datos, no almacenamos, ni vendemos ni nada de nada. 😇 </strong></p>
+      <p>Nota Legal: <strong>No hacemos NADA con tus datos, no almacenamos, ni vendemos ni nada de nada. 😇 </strong>
+      </p>
     </header>
     <main id="app">
       <section id="content">
         <div class="form-wrapper">
-          <h2>Introduce tu <br> datos fiscales</h2>
+          <h2 class="form-title">Introduce tu <br> datos fiscales</h2>
           <form id="formLegal">
             <div class="column-3">
               <div class="input-container">
@@ -55,30 +56,57 @@
               </div>
             </div>
             <div class="container-submit ">
-              <button type="submit">Generar texto legal</button>
-              <span id="message-alert" class="alert-success alert-error aler-information"> Your alerts will appear here.</span></span>
-              <button id="input-reset" disabled>Borrar datos</button>
+              <button type="submit">
+                <img src="/src/assets/img/icon_generate.svg" alt="generate">
+                Generar texto legal</button>
+              <span id="message-alert" class="alert-success">
+                Your alerts will appear here.</span>
+              <button id="input-reset" disabled>
+                <img src="/src/assets/img/icon_reset.svg" alt="reset">
+                Borrar datos</button>
             </div>
 
           </form>
         </div>
         <div id="container-toggle">
           <nav>
-            <a id="btn-toggle-privacidad" class="active">Ver Politica de Privacidad</a>
-            <a id="btn-toggle-legal">Ver Avíso Legal</a>
+            <a id="btn-toggle-privacidad" class="active">
+              <img src="/src/assets/img/icon_copy.svg" alt="copy text privacidad">
+              Ver Politica de Privacidad</a>
+            <a id="btn-toggle-legal">
+              <img src="/src/assets/img/icon_copy.svg" alt="copy text legal">
+              Ver Avíso Legal</a>
           </nav>
-          <div id="txt-toggle-privacidad" class="active">
-            <h4>Politica de Privacidad... the legal text will appear here</h4>
+          <div id="container-texts">
+            <div id="txt-toggle-privacidad" class="active style-preview">
+              <h1>Politica de Privacidad... the legal text will appear here</h1>
+              <p>Proident proident cupidatat amet quis veniam. Commodo labore laboris pariatur sint veniam ex officia
+                voluptate velit qui laboris laboris culpa cupidatat commodo. Consectetur eiusmod sint Lorem consequat
+                enim tempor ea officia culpa do labore ea ut do. Incididunt eu nulla do laboris proident mollit laboris
+                ex cillum. Est et adipisicing proident dolore ullamco et qui qui sint occaecat ad laboris sint dolor.
+                Consectetur adipisicing eiusmod ad exercitation.
+
+                Pariatur duis velit dolore dolore. Deserunt consequat quis minim nulla mollit. Ut ea ipsum anim dolor
+                aute dolore amet laboris enim. Aute voluptate esse tempor tempor ex esse dolor ea eu reprehenderit nisi
+                enim. Exercitation nulla excepteur non enim fugiat ex nulla mollit.
+
+                Labore elit pariatur esse est consequat laboris in. Commodo cillum ea do sit elit nisi dolor commodo
+                labore culpa nulla non qui reprehenderit. Laboris ut dolore velit excepteur id esse aliquip ex aliqua
+                ullamco in esse ullamco. Cupidatat voluptate reprehenderit proident sit non excepteur culpa pariatur
+                nisi incididunt culpa. Enim elit quis pariatur velit ad voluptate pariatur in nulla sint commodo enim.
+                In occaecat aliqua aute eu aliqua ea duis qui minim veniam consequat in est id.</p>
+            </div>
+            <div id="txt-toggle-legal" class="hidden style-preview">
+              <h4>Aviso Legal... the legal text will appear here</h4>
+            </div>
           </div>
-          <div id="txt-toggle-legal" class="hidden">
-            <h4>Aviso Legal... the legal text will appear here</h4>
-          </div>
+
         </div>
 
       </section>
 
       <aside id="preview">
-        <h3>Vista previa <br> de tus datos fiscales</h3>
+        <h3 class="preview-title">Vista previa <br> de tus datos fiscales</h3>
         <ul>
           <li>Denominación social: <span id="prv-social"> Empresa Ejemplo. SL </span></li>
           <li>Nombre comercial: <span id="prv-comercial"> Empresa Ejemplo. SL </span></li>
