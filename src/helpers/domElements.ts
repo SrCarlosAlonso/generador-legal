@@ -30,4 +30,6 @@ export const DOM_ELEMENTS = {
 
   coppyBtnPrivacidad: document.querySelector('#btn-toggle-privacidad img') as HTMLButtonElement,
   coppyBtnLegal: document.querySelector('#btn-toggle-legal img') as HTMLButtonElement,
+
+  alertContainer: $("alert-container") as HTMLDivElement,
 };

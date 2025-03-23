@@ -2,6 +2,7 @@ import { ObjData } from "@helpers/customTypes";
 import { convertMD } from "@helpers/formatData";
 import { DOM_ELEMENTS, $ } from "./helpers/domElements";
 import { copyText } from "@helpers/copyTextt";
+import { newAlert } from "@helpers/newAlert";
 import avisoLegal from "@docs/aviso_v1.md?raw";
 import politicaPrivacidad from "@docs/privacidad_v1.md?raw";
 
@@ -109,7 +110,7 @@ const handleBtnGenerate = (e: Event) => {
   console.log(`Data saved in OBJ_DATA_TEMP, ${OBJ_DATA_TEMP}`);
   // 2.3 Check if all the fields are filled
   if (Object.values(OBJ_DATA_TEMP).some((value) => value === "")) {
-    console.log("Please fill all the fields");
+    newAlert("Please fill all the fields", "error");
     return;
   }
   // 2.4 If all the fields are filled, we save the data in OBJ_DATA and generateDocument is called
@@ -132,6 +133,8 @@ async function generateDocument() {
   containerPrivacidad.appendChild(contentPrivacidad);
   containerLegal.innerText = "";
   containerLegal.appendChild(contentLegal);
+
+  newAlert("Texto legal success", "success");
 }
 
 // 3.2 Reset for the inputs and the global object OBJ_DATA

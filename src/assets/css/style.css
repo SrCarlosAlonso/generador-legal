@@ -254,11 +254,13 @@ input#nif {
     }
   }
 }
+#alert-container {
+  flex-grow: 1;
+}
 #message-alert {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-grow: 1;
   min-height: 36px;
   border: 1px dashed;
   border-radius: var(--br-m);
@@ -341,15 +343,19 @@ input#nif {
   max-height: 250px;
   overflow-y: scroll;
   transition: all 0.3s ease;
-
 }
 /* ---------- Styling for the preview legal text ---------- */
-.style-preview{
+.style-preview {
   font-size: 85%;
-  p{
+  p {
     font-weight: 300;
   }
-  h1,h2,h3,h4,h5,h6{
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin: 4px 0px;
   }
 }
@@ -361,14 +367,14 @@ input#nif {
 }
 #txt-toggle-privacidad::-webkit-scrollbar-track,
 #txt-toggle-legal::-webkit-scrollbar-track {
-  background-color: #28394A;
+  background-color: #28394a;
   border-radius: 10px;
 }
 #txt-toggle-privacidad::-webkit-scrollbar-thumb,
 #txt-toggle-legal::-webkit-scrollbar-thumb {
-  background-color: #334A5E;
+  background-color: #334a5e;
   border-radius: 10px;
-  border: 3px solid #28394A;
+  border: 3px solid #28394a;
 }
 #txt-toggle-privacidad::-webkit-scrollbar-thumb:hover,
 #txt-toggle-legal::-webkit-scrollbar-thumb:hover {
@@ -376,7 +382,7 @@ input#nif {
 }
 #txt-toggle-privacidad,
 #txt-toggle-legal {
-  scrollbar-color: #334A5E #28394A;
+  scrollbar-color: #334a5e #28394a;
   scrollbar-width: thin;
 }
 /* Styling for the preview section */
