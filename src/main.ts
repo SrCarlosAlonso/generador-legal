@@ -1,45 +1,16 @@
 import { ObjData } from "@helpers/customTypes";
 import { convertMD } from "@helpers/formatData";
+import { DOM_ELEMENTS, $ } from "./helpers/domElements";
 import avisoLegal from "@docs/aviso_v1.md?raw";
 import politicaPrivacidad from "@docs/privacidad_v1.md?raw";
 
+// 0. Listeners
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM is ready!");
 
   handleInputs(DOM_ELEMENTS);
   listenerToggleBtn();
 });
-
-const $ = (id: string) => {
-  const el = document.getElementById(id);
-  if (!el) {
-    throw new Error(`Elemento ${id} no encontrado`);
-  }
-  return el;
-};
-
-const DOM_ELEMENTS = {
-  social: $("input-social") as HTMLInputElement,
-  nombreComercial: $("input-comercial") as HTMLInputElement,
-  cif: $("input-cif") as HTMLInputElement,
-  direccion: $("input-direccion") as HTMLInputElement,
-  email: $("input-email") as HTMLInputElement,
-  website: $("input-website") as HTMLInputElement,
-  fecha: $("input-fecha") as HTMLInputElement,
-
-  btnPrivacidad: $("btn-toggle-privacidad") as HTMLButtonElement,
-  btnLegal: $("btn-toggle-legal") as HTMLButtonElement,
-  txtPrivacidad: $("txt-toggle-privacidad") as HTMLDivElement,
-  txtLegal: $("txt-toggle-legal") as HTMLDivElement,
-
-  btnGenerate: document.querySelector(
-    "button[type='submit']"
-  ) as HTMLButtonElement,
-  btnReset: $("input-reset") as HTMLButtonElement,
-
-  txtTogglePrivacidad: $("txt-toggle-privacidad"),
-  txtToggleLegal: $("txt-toggle-legal"),
-};
 
 function listenerInput(input: HTMLInputElement) {
   input.addEventListener("change", () => {
@@ -51,73 +22,13 @@ function handleInputs(input: Object) {
   Object.values(input).forEach((input) => listenerInput(input));
 }
 
-// 1. let's print the data after the input changed and the button generate clicked.
-const handelPreview = (id: string, value: string) => {
-  const name = id.toString().split("-")[1];
-  const elementPrv = $(`prv-${name}`);
-  elementPrv.textContent = value;
-};
-
-// 2. handelButtons. when do you click on generate button. the program will save the data in a new object, then we take the new information object to generate the legal document.
-
-let OBJ_DATA: ObjData = {
-  social: "",
-  nombreComercial: "",
-  cif: "",
-  direccion: "",
-  email: "",
-  website: "",
-  fecha: "",
-};
-
-const handleBtnGenerate = (e: Event) => {
-  e.preventDefault();
-  // 1. take the value from inputs.value
-  const OBJ_DATA_TEMP: ObjData = {
-    social: DOM_ELEMENTS.social.value,
-    nombreComercial: DOM_ELEMENTS.nombreComercial.value,
-    cif: DOM_ELEMENTS.cif.value,
-    direccion: DOM_ELEMENTS.direccion.value,
-    email: DOM_ELEMENTS.email.value,
-    website: DOM_ELEMENTS.website.value,
-    fecha: DOM_ELEMENTS.fecha.value,
-  };
-  console.log(`Data saved in OBJ_DATA_TEMP, ${OBJ_DATA_TEMP}`);
-  // 2. check thif the value are not empty
-  if (Object.values(OBJ_DATA_TEMP).some((value) => value === "")) {
-    console.log("Please fill all the fields");
-    return;
-  }
-  // 3. if the valuea are not empty, then we save the infomation in the objecto.
-  OBJ_DATA = OBJ_DATA_TEMP;
-  // 4. When the information is saved, we take the the object to pritn the legal document.
-  generateDocument();
-};
-
-DOM_ELEMENTS.btnGenerate.addEventListener("click", handleBtnGenerate);
-
-async function generateDocument() {
-  // Print the data in the container
-  const contentPrivacidad = await convertMD(politicaPrivacidad, OBJ_DATA);
-  const containerPrivacidad = DOM_ELEMENTS.txtTogglePrivacidad;
-  containerPrivacidad.innerText = "";
-  containerPrivacidad.appendChild(contentPrivacidad);
-
-  const contentLegal = await convertMD(avisoLegal, OBJ_DATA);
-  const containerLegal = DOM_ELEMENTS.txtToggleLegal;
-  containerLegal.innerText = "";
-  containerLegal.appendChild(contentLegal);
-}
-
-// 2.1 if the user clilc eb delete, all the data will be deleted.
-
-// 2.2 Toggle button for Privacidad and Legal
-
+// 0.1 Toggle button for Privacidad and Legal
 function listenerToggleBtn() {
   const btnPrivacidad = DOM_ELEMENTS.btnPrivacidad;
   const txtPrivacidad = DOM_ELEMENTS.txtPrivacidad;
   const btnLegal = DOM_ELEMENTS.btnLegal;
   const txtLegal = DOM_ELEMENTS.txtLegal;
+
   function toggleVisibility(
     btnActive: HTMLButtonElement,
     txtActive: HTMLDivElement,
@@ -158,3 +69,64 @@ function listenerToggleBtn() {
     toggleVisibility(btnLegal, txtLegal, btnPrivacidad, txtPrivacidad)
   );
 }
+
+// 1. We print the preview data after the input changed, we don't save the data in the object
+const handelPreview = (id: string, value: string) => {
+  const name = id.toString().split("-")[1];
+  const elementPrv = $(`prv-${name}`);
+  elementPrv.textContent = value;
+};
+
+// 2. When user click on generate button hanndelGenerate is called
+let OBJ_DATA: ObjData = {
+  social: "",
+  nombreComercial: "",
+  cif: "",
+  direccion: "",
+  email: "",
+  website: "",
+  fecha: "",
+};
+
+const handleBtnGenerate = (e: Event) => {
+  e.preventDefault();
+
+  // 2.2 Create a temporary object with the data from the inputs
+  const OBJ_DATA_TEMP: ObjData = {
+    social: DOM_ELEMENTS.social.value,
+    nombreComercial: DOM_ELEMENTS.nombreComercial.value,
+    cif: DOM_ELEMENTS.cif.value,
+    direccion: DOM_ELEMENTS.direccion.value,
+    email: DOM_ELEMENTS.email.value,
+    website: DOM_ELEMENTS.website.value,
+    fecha: DOM_ELEMENTS.fecha.value,
+  };
+  console.log(`Data saved in OBJ_DATA_TEMP, ${OBJ_DATA_TEMP}`);
+  // 2.3 Check if all the fields are filled
+  if (Object.values(OBJ_DATA_TEMP).some((value) => value === "")) {
+    console.log("Please fill all the fields");
+    return;
+  }
+  // 2.4 If all the fields are filled, we save the data in OBJ_DATA and generateDocument is called
+  OBJ_DATA = OBJ_DATA_TEMP;
+  generateDocument();
+};
+// 2.1 Add event listener to the button generate to call hanndelGenerate
+DOM_ELEMENTS.btnGenerate.addEventListener("click", handleBtnGenerate);
+
+// 3. When the Data is saven in the global object OBJ_DATA, we generate the legal document
+async function generateDocument() {
+  //  3.1 We create container with de data form MD documents and the function convertMD to remplace and print the data
+  const contentPrivacidad = await convertMD(politicaPrivacidad, OBJ_DATA);
+  const contentLegal = await convertMD(avisoLegal, OBJ_DATA);
+
+  const containerPrivacidad = DOM_ELEMENTS.txtTogglePrivacidad;
+  const containerLegal = DOM_ELEMENTS.txtToggleLegal;
+
+  containerPrivacidad.innerText = "";
+  containerPrivacidad.appendChild(contentPrivacidad);
+  containerLegal.innerText = "";
+  containerLegal.appendChild(contentLegal);
+}
+
+// 3.2 Reset for the inputs and the global object OBJ_DATA
