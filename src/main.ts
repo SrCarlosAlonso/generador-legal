@@ -1,6 +1,7 @@
 import { ObjData } from "@helpers/customTypes";
 import { convertMD } from "@helpers/formatData";
 import { DOM_ELEMENTS, $ } from "./helpers/domElements";
+import { copyText } from "@helpers/copyTextt";
 import avisoLegal from "@docs/aviso_v1.md?raw";
 import politicaPrivacidad from "@docs/privacidad_v1.md?raw";
 
@@ -69,6 +70,10 @@ function listenerToggleBtn() {
     toggleVisibility(btnLegal, txtLegal, btnPrivacidad, txtPrivacidad)
   );
 }
+
+//  0.2  Listner for copy buttons
+DOM_ELEMENTS.coppyBtnPrivacidad.addEventListener("click", copyText);
+DOM_ELEMENTS.coppyBtnLegal.addEventListener("click", copyText);
 
 // 1. We print the preview data after the input changed, we don't save the data in the object
 const handelPreview = (id: string, value: string) => {
