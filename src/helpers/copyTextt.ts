@@ -1,3 +1,5 @@
+import { newAlert } from "@helpers/newAlert";
+
 export async function copyText(e: Event){
   const target = e.target as HTMLElement;
   if (!target) return console.error("Target is null");
@@ -11,6 +13,8 @@ export async function copyText(e: Event){
   if (!container) return console.error("Container is null");
 
   const text = container.innerHTML;
+
+  if (text.length < 100) return newAlert("You need first fill the form", "error");
 
   try {
     await navigator.clipboard.writeText(text);
