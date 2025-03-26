@@ -32,4 +32,22 @@ export const DOM_ELEMENTS = {
   coppyBtnLegal: document.querySelector('#btn-toggle-legal img') as HTMLButtonElement,
 
   alertContainer: $("alert-container") as HTMLDivElement,
+
+  prvSocial: $("prv-social") as HTMLSpanElement,
+  prvComercial: $("prv-comercial") as HTMLSpanElement,
+  prvCif: $("prv-cif") as HTMLSpanElement,
+  prvDireccion: $("prv-direccion") as HTMLSpanElement,
+  prvEmail: $("prv-email") as HTMLSpanElement,
+  prvWebsite: $("prv-website") as HTMLSpanElement,
+  prvFecha: $("prv-fecha") as HTMLSpanElement,
+};
+
+export const INPUTS_PLACEHOLDER = {
+  placeholderSocial: "Empresa Ejemplo. SL",
+  placeholderComercial: "Empresa Ejemplo",
+  placeholderCif: "123456789X",
+  placeholderDireccion: "Calle de Prueba 456, 1-2, 08000 - Barcelona, España",
+  placeholderEmail: "ejemplo@empresa.com",
+  placeholderWebsite: "www.empresaejemplo.es",
+  placeholderFecha: Date.now().toLocaleString(),
 };

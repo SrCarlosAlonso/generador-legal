@@ -1,13 +1,35 @@
 import { ObjData } from "@helpers/customTypes";
 import { convertMD } from "@helpers/formatData";
-import { DOM_ELEMENTS, $ } from "./helpers/domElements";
+import { DOM_ELEMENTS, $, INPUTS_PLACEHOLDER } from "./helpers/domElements";
 import { copyText } from "@helpers/copyTextt";
 import { newAlert } from "@helpers/newAlert";
 import avisoLegal from "@docs/aviso_v1.md?raw";
 import politicaPrivacidad from "@docs/privacidad_v1.md?raw";
 
+const {
+  btnReset,
+  btnGenerate,
+  txtTogglePrivacidad,
+  txtToggleLegal,
+  btnPrivacidad,
+  txtPrivacidad,
+  btnLegal,
+  txtLegal,
+  coppyBtnPrivacidad,
+  coppyBtnLegal,
+  social,
+  nombreComercial,
+  cif,
+  direccion,
+  email,
+  website,
+  fecha,
+  alertContainer,
+} = DOM_ELEMENTS;
+
 // 0. Listeners
 document.addEventListener("DOMContentLoaded", function () {
+  printHTML();
   console.log("DOM is ready!");
 
   handleInputs(DOM_ELEMENTS);
@@ -17,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function listenerInput(input: HTMLInputElement) {
   input.addEventListener("change", () => {
     handelPreview(input.id, input.value);
+    btnReset.disabled = false;
   });
 }
 
@@ -26,11 +49,6 @@ function handleInputs(input: Object) {
 
 // 0.1 Toggle button for Privacidad and Legal
 function listenerToggleBtn() {
-  const btnPrivacidad = DOM_ELEMENTS.btnPrivacidad;
-  const txtPrivacidad = DOM_ELEMENTS.txtPrivacidad;
-  const btnLegal = DOM_ELEMENTS.btnLegal;
-  const txtLegal = DOM_ELEMENTS.txtLegal;
-
   function toggleVisibility(
     btnActive: HTMLButtonElement,
     txtActive: HTMLDivElement,
@@ -73,8 +91,8 @@ function listenerToggleBtn() {
 }
 
 //  0.2  Listner for copy buttons
-DOM_ELEMENTS.coppyBtnPrivacidad.addEventListener("click", copyText);
-DOM_ELEMENTS.coppyBtnLegal.addEventListener("click", copyText);
+coppyBtnPrivacidad.addEventListener("click", copyText);
+coppyBtnLegal.addEventListener("click", copyText);
 
 // 1. We print the preview data after the input changed, we don't save the data in the object
 const handelPreview = (id: string, value: string) => {
@@ -96,18 +114,16 @@ let OBJ_DATA: ObjData = {
 
 const handleBtnGenerate = (e: Event) => {
   e.preventDefault();
-
   // 2.2 Create a temporary object with the data from the inputs
   const OBJ_DATA_TEMP: ObjData = {
-    social: DOM_ELEMENTS.social.value,
-    nombreComercial: DOM_ELEMENTS.nombreComercial.value,
-    cif: DOM_ELEMENTS.cif.value,
-    direccion: DOM_ELEMENTS.direccion.value,
-    email: DOM_ELEMENTS.email.value,
-    website: DOM_ELEMENTS.website.value,
-    fecha: DOM_ELEMENTS.fecha.value,
+    social: social.value,
+    nombreComercial: nombreComercial.value,
+    cif: cif.value,
+    direccion: direccion.value,
+    email: email.value,
+    website: website.value,
+    fecha: fecha.value,
   };
-  console.log(`Data saved in OBJ_DATA_TEMP, ${OBJ_DATA_TEMP}`);
   // 2.3 Check if all the fields are filled
   if (Object.values(OBJ_DATA_TEMP).some((value) => value === "")) {
     newAlert("Please fill all the fields", "error");
@@ -118,7 +134,7 @@ const handleBtnGenerate = (e: Event) => {
   generateDocument();
 };
 // 2.1 Add event listener to the button generate to call hanndelGenerate
-DOM_ELEMENTS.btnGenerate.addEventListener("click", handleBtnGenerate);
+btnGenerate.addEventListener("click", handleBtnGenerate);
 
 // 3. When the Data is saven in the global object OBJ_DATA, we generate the legal document
 async function generateDocument() {
@@ -126,8 +142,8 @@ async function generateDocument() {
   const contentPrivacidad = await convertMD(politicaPrivacidad, OBJ_DATA);
   const contentLegal = await convertMD(avisoLegal, OBJ_DATA);
 
-  const containerPrivacidad = DOM_ELEMENTS.txtTogglePrivacidad;
-  const containerLegal = DOM_ELEMENTS.txtToggleLegal;
+  const containerPrivacidad = txtTogglePrivacidad;
+  const containerLegal = txtToggleLegal;
 
   containerPrivacidad.innerText = "";
   containerPrivacidad.appendChild(contentPrivacidad);
@@ -138,3 +154,38 @@ async function generateDocument() {
 }
 
 // 3.2 Reset for the inputs and the global object OBJ_DATA
+btnReset.addEventListener("click", () => {
+  btnReset.disabled = true;
+
+  Object.values(DOM_ELEMENTS).forEach((input) => {
+    if (input instanceof HTMLInputElement) {
+      input.value = "";
+    }
+  });
+
+  alertContainer.innerHTML = "";
+
+  printHTML(); // Print again the PlaceHolders Elements
+});
+
+// 4. Print the HTML
+function printHTML() {
+  const { prvSocial, prvComercial, prvCif, prvDireccion, prvEmail, prvWebsite, prvFecha, } = DOM_ELEMENTS;
+  const { placeholderSocial, placeholderComercial, placeholderCif, placeholderDireccion, placeholderEmail, placeholderWebsite, placeholderFecha, } = INPUTS_PLACEHOLDER;
+
+  social.placeholder = placeholderSocial;
+  nombreComercial.placeholder = placeholderComercial;
+  cif.placeholder = placeholderCif;
+  direccion.placeholder = placeholderDireccion;
+  email.placeholder = placeholderEmail;
+  website.placeholder = placeholderWebsite;
+  fecha.placeholder = placeholderFecha;
+
+  prvSocial.textContent = placeholderSocial;
+  prvComercial.textContent = placeholderComercial;
+  prvCif.textContent = placeholderCif;
+  prvDireccion.textContent = placeholderDireccion;
+  prvEmail.textContent = placeholderEmail;
+  prvWebsite.textContent = placeholderWebsite;
+  prvFecha.textContent = placeholderFecha;
+}
