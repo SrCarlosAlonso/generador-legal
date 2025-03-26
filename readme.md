@@ -12,10 +12,10 @@
    ```
 
 3. ~~Crear una función que reciba un string y reemplaza los marcadores con el contenido de un objeto~~
-4. Añadir botonnes para copiar el texto generado (cada uno con su propio contenido).
+4. ~~Crear una función que reciba un string y reemplaza los marcadores con el contenido de un objeto~~
 5. Fix styles y repasar responsive.
 6. Guardar versiones de los documentos en localStorage. Tener la opcion de hacer el CRUD.
-7. Mostrar alertas (error, info y success) en la pantalla.
+7. ~~Crear una función que reciba un string y reemplaza los marcadores con el contenido de un objeto~~
 8. Mostrar las plantillas por defecto con textos de ejemplo.
 9. En la pestaña de vista previa an1adir tambien botnes de guardar y descargar.
 
