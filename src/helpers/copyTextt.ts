@@ -18,7 +18,7 @@ export async function copyText(e: Event){
 
   try {
     await navigator.clipboard.writeText(text);
-    console.log("Text copied to clipboard");
+    newAlert("Texto copiado", "success");
   } catch (error) {
     console.error("Failed to copy text:", error);
   }
