@@ -420,22 +420,109 @@ h3.preview-title {
     color: #48441d;
   }
 }
+footer {
+  background-color: var(--fondo-medio);
+  color: var(--texto);
+  padding: 2rem 1rem;
+  border-top: 1px solid var(--border);
+}
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+.footer-text h2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.footer-text p {
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+}
+.user-profile {
+  align-items: center;
+  gap: 12px;
+  background-color: var(--fondo-10);
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+}
+.user-info p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+.username {
+  font-weight: bold;
+  color: var(--detalle);
+  text-decoration: none;
+}
+.username:hover {
+  text-decoration: underline;
+}
+.github-button {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 6px 12px;
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo más claro */
+  color: var(--acento);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.github-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--texto);
+}
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+.social-links a {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--fondo-20);
+  border-radius: var(--br-m);
+  transition: background 0.3s ease;
+}
+.social-links a:hover {
+  background-color: var(--detalle);
+}
+.social-links a img {
+  width: 20px;
+  height: 20px;
+}
 
 /*  ---- Responsive ---- */
 @media screen and (max-width: 768px) {
-  body{
+  body {
     padding: 1.6rem;
   }
-  main{
+  main {
     flex-direction: column;
     border-radius: var(--br-l);
-
   }
   #content {
     width: 100%;
     padding: 1.6rem;
   }
-  form .column-3, form .column-2 {
+  form .column-3,
+  form .column-2 {
     grid-template-columns: 1fr;
     gap: 0px;
   }
@@ -449,16 +536,16 @@ h3.preview-title {
     display: flex;
     flex-direction: column-reverse;
   }
-  #container-toggle nav a{
+  #container-toggle nav a {
     flex-direction: column;
     text-align: center;
     gap: 0px;
     font-size: 11px;
     line-height: 1;
-    border: none!important;
-    width: 50%!important;
-    min-height: 100px!important;
-    img{
+    border: none !important;
+    width: 50% !important;
+    min-height: 100px !important;
+    img {
       width: 24px;
     }
   }
