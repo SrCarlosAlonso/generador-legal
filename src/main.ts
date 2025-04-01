@@ -171,7 +171,7 @@ btnReset.addEventListener("click", () => {
 // 4. Print the HTML
 function printHTML() {
   const { prvSocial, prvComercial, prvCif, prvDireccion, prvEmail, prvWebsite, prvFecha, } = DOM_ELEMENTS;
-  const { placeholderSocial, placeholderComercial, placeholderCif, placeholderDireccion, placeholderEmail, placeholderWebsite, placeholderFecha, } = INPUTS_PLACEHOLDER;
+  const { placeholderSocial, placeholderComercial, placeholderCif, placeholderDireccion, placeholderEmail, placeholderWebsite, placeholderFecha, placeholderPolitica, placeholderLegal, } = INPUTS_PLACEHOLDER;
 
   social.placeholder = placeholderSocial;
   nombreComercial.placeholder = placeholderComercial;
@@ -188,4 +188,7 @@ function printHTML() {
   prvEmail.textContent = placeholderEmail;
   prvWebsite.textContent = placeholderWebsite;
   prvFecha.textContent = placeholderFecha;
+
+  txtPrivacidad.innerHTML = `<h4>${placeholderPolitica}</h4>`;
+  txtLegal.innerHTML = `<h4>${placeholderLegal}</h4>`;
 }

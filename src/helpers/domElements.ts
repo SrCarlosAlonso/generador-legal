@@ -50,4 +50,6 @@ export const INPUTS_PLACEHOLDER = {
   placeholderEmail: "ejemplo@empresa.com",
   placeholderWebsite: "www.empresaejemplo.es",
   placeholderFecha: Date.now().toLocaleString(),
+  placeholderPolitica: "Politica de Privacidad... the privacidad text will appear here",
+  placeholderLegal: "Avíso Legal... the legal text will appear here",
 };
