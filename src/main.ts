@@ -126,7 +126,7 @@ const handleBtnGenerate = (e: Event) => {
   };
   // 2.3 Check if all the fields are filled
   if (Object.values(OBJ_DATA_TEMP).some((value) => value === "")) {
-    newAlert("Please fill all the fields", "error");
+    newAlert("Rellena todos los campos", "error");
     return;
   }
   // 2.4 If all the fields are filled, we save the data in OBJ_DATA and generateDocument is called
@@ -150,7 +150,7 @@ async function generateDocument() {
   containerLegal.innerText = "";
   containerLegal.appendChild(contentLegal);
 
-  newAlert("Texto legal success", "success");
+  newAlert("Texto legal generado", "success");
 }
 
 // 3.2 Reset for the inputs and the global object OBJ_DATA
